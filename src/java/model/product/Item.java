@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.product;
 
 /**
  *
@@ -16,6 +16,9 @@ public class Item {
     private int quantity;
     private String imagePath;
     private String description;
+    private String itemRates;
+    private float star;
+    
 
     public Item(String name, float price, int quantity, String image_path, String description) {
         this.id = -1;

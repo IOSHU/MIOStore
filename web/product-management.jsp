@@ -14,7 +14,7 @@
     <body>
         <jsp:include page="header.jsp"></jsp:include>
         <h1>Hello World this is product management page!</h1>
-        <p>${sessionScope.user.name}</p>
+        <p>${sessionScope.employee.fullName.firstName}</p>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

@@ -19,7 +19,7 @@ public class DbConnection {
     private final String user = "archer";
     private final String passwd = "archer";
     private final String url = "jdbc:mysql://localhost:3306/";
-    private final String db = "miostore";
+    private final String db = "miostore1";
     private Connection conn;
     private static DbConnection dbConnection;
     

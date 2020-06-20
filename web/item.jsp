@@ -4,7 +4,7 @@
     Author     : hieule
 --%>
 
-<%@page import="model.Item"%>
+<%@page import="model.product.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <p>${sessionScope.user.name}</p>
+        <p>${sessionScope.employee.fullName.firstName}</p>
 
         <div>
             <form method="POST" action="search">

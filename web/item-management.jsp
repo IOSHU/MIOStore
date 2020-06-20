@@ -4,7 +4,7 @@
     Author     : hieule
 --%>
 
-<%@page import="model.Item"%>
+<%@page import="model.product.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

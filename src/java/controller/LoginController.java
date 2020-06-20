@@ -7,7 +7,7 @@ package controller;
 
 import dao.DAO;
 import dao.ItemDAO;
-import dao.UserDAO;
+import dao.EmployeeDAO;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -16,8 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Item;
-import model.Person;
+import model.Role;
+import model.product.Item;
+import model.employee.Employee;
 
 /**
  *
@@ -39,15 +40,15 @@ public class LoginController extends HttpServlet {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         
-        DAO dao = new UserDAO();
-        Person user = (Person) dao.get(username);
+        DAO dao = new EmployeeDAO();
+        Employee employee = (Employee) dao.get(username);
         
-        if(user != null && user.getPassword().equals(password)){
+        if(employee != null && employee.getAccount().getPassword().equals(password) && employee.getRole() == Role.STAFF){
             dao = new ItemDAO();
             Item[] items = (Item[]) dao.getAll();
             
             HttpSession session=request.getSession();
-            session.setAttribute("user", user);
+            session.setAttribute("employee", employee);
             session.setAttribute("items", items);
             response.sendRedirect(request.getContextPath()+"/home.jsp");
         }

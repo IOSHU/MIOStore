@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Item;
+import model.product.Item;
 
 /**
  *
@@ -32,9 +32,9 @@ public class ItemDAO implements DAO<Item> {
             if(rs.next()) {
                 Item item = new Item(
                         rs.getInt("id"), 
-                        rs.getString("_name"),
-                        rs.getFloat("price"), 
-                        rs.getInt("quantity"), 
+                        rs.getString("Name"),
+                        rs.getFloat("SellingPrice"), 
+                        rs.getInt("Quantity"), 
                         rs.getString("image_path"),
                         rs.getString("description")
                 );
@@ -49,7 +49,7 @@ public class ItemDAO implements DAO<Item> {
 
     @Override
     public void add(Item t) {
-        String sql = "INSERT INTO item(_name, price, quantity, image_path, description)"+
+        String sql = "INSERT INTO item(Name, SellingPrice, Quantity, image_path, description)"+
                 " VALUES(?, ?, ?, ?, ?)";
         Connection conn = DbConnection.getInstance().getConnection();
         
@@ -71,7 +71,7 @@ public class ItemDAO implements DAO<Item> {
     @Override
     public void update(Item t) {
         String sql = "Update item"+
-                " SET _name = ?, price = ?, quantity = ?, image_path = ?, description = ?"+
+                " SET Name = ?, SellingPrice = ?, Quantity = ?, image_path = ?, description = ?"+
                 " WHERE id = ?";
         Connection conn = DbConnection.getInstance().getConnection();
         
@@ -115,11 +115,11 @@ public class ItemDAO implements DAO<Item> {
     
 //    public static void main(String[] args) {
 //        DAO dao = new ItemDAO();
-//        Item item = (Item) dao.get(12);
-//        System.out.println(item);
-////        Item[] items = (Item[]) dao.getAll();
-////        for(Item item : items)
-////            System.out.println(item);
+////        Item item = (Item) dao.get(12);
+////        System.out.println(item);
+//        Item[] items = (Item[]) dao.getAll();
+//        for(Item item : items)
+//            System.out.println(item);
 ////        for(int i = 0; i < 10; i++) {
 ////            Item item = new Item("phone"+i, (float)112.2+10*i, i+4, "/hlc/home/img"+i, "not good enough"+i);
 ////            dao.add(item);
@@ -144,9 +144,9 @@ public class ItemDAO implements DAO<Item> {
             while (rs.next()) {
                 Item item = new Item(
                         rs.getInt("id"), 
-                        rs.getString("_name"),
-                        rs.getFloat("price"), 
-                        rs.getInt("quantity"), 
+                        rs.getString("Name"),
+                        rs.getFloat("SellingPrice"), 
+                        rs.getInt("Quantity"), 
                         rs.getString("image_path"),
                         rs.getString("description")
                 );
@@ -168,7 +168,7 @@ public class ItemDAO implements DAO<Item> {
     @Override
     public Item[] getAllNameLike(String name) {
         Connection conn = DbConnection.getInstance().getConnection();
-        String sql = "SELECT * FROM item WHERE _name LIKE '%"+name+"%'";
+        String sql = "SELECT * FROM item WHERE Name LIKE '%"+name+"%'";
         List<Item> listItem = new ArrayList<>();
         Item[] items = null;
         try {
@@ -178,9 +178,9 @@ public class ItemDAO implements DAO<Item> {
             while (rs.next()) {
                 Item item = new Item(
                         rs.getInt("id"), 
-                        rs.getString("_name"),
-                        rs.getFloat("price"), 
-                        rs.getInt("quantity"), 
+                        rs.getString("Name"),
+                        rs.getFloat("SellingPrice"), 
+                        rs.getInt("Quantity"), 
                         rs.getString("image_path"),
                         rs.getString("description")
                 );
